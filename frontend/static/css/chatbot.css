@@ -1,0 +1,368 @@
+/* /static/css/chatbot.css */
+
+/* Styles généraux */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: #1d8e5d;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-logo {
+  height: 50px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.header-logo:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.header-logo:active {
+  transform: scale(0.98);
+}
+
+.header-nav {
+  display: flex;
+  gap: 25px;
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.header-nav a:hover {
+  color: #d4d4d4;
+}
+
+footer {
+  background-color: #1d8e5d;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  margin-top: auto;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles spécifiques à la page d'accueil */
+.content {
+  padding: 30px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.chatbot-container {
+  width: 90%;
+  max-width: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  height: 70vh;
+  position: fixed;
+  bottom: 120px;
+  right: 50px;
+  z-index: 1000;
+}
+
+/* .chatbot-image {
+  width: 500px;
+  height: auto;
+  max-height: 450px;
+  object-fit: contain;
+  animation: float 3s ease-in-out infinite;
+} */
+
+.chatbot-label {
+  display: block;
+  width: 100%;
+  margin: 20px auto 0;
+  padding: 0 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #0066cc;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Styles spécifiques à la page "À propos" */
+.page-container {
+  padding: 0 20px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.main-title,
+.team-title {
+  color:#1d8e5d;
+  text-align: center;
+  margin: 40px 0 30px;
+  font-size: 2rem;
+}
+
+.section-block {
+  background: white;
+  border-radius: 30px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.section-header {
+  background-color: #1d8e5d;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.section-content {
+  padding: 20px;
+}
+
+.team-section {
+  background-color: #e8f5e9;
+  padding: 40px 20px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 50px;
+  align-items: stretch;
+}
+
+.team-member {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-left: 10px solid#1d8e5d;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.centered-message {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.chatbot-container:hover {
+  transform: scale(1.05);
+}
+
+@keyframes blink-image {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes blink {
+  from { opacity: 1; }
+  to { opacity: 0.7; }
+}
+
+@keyframes typing {
+  0% { opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+/* Menu burger */
+.burger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}
+
+.header-nav {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .burger {
+    display: block;
+  }
+
+  .header-nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    background-color: #1d8e5d;
+    padding: 10px;
+    border-radius: 6px;
+  }
+
+  .header-nav.show {
+    display: flex;
+  }
+}
+
+/* Styles spécifiques au chatbot */
+#coop-info-button {
+  position: fixed;
+  top: 30%;
+  left: 38%;
+  transform: translate(-50%, -50%);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 101;
+  animation: blink-image 3s ease-in-out infinite;
+  width: 60px;
+  height: 60px;
+  background: none;
+}
+.chat-container {
+  width: 90%;
+  max-width: 800px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  align-self: center;
+  height: 70vh;
+  margin-top: 50px;
+
+}
+
+.chat-header {
+  background-color: #1d8e5d;
+  color: white;
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.chat-header > img {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+#close-chat-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.chat-box {
+  flex-grow: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.chat-suggestions {
+  padding: 10px;
+  background-color: #eee;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.suggestion-button {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.chat-input {
+  padding: 10px;
+  display: flex;
+}
+
+#user-input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+#send-btn {
+  padding: 8px 12px;
+  background-color: #1d8e5d;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 5px;
+}

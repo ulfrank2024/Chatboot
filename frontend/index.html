@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LA CITÉ - Accueil</title>
+    <link rel="stylesheet" href="/static/css/chatbot.css">
+</head>
+<body>
+    <header>
+        <img
+            src="/static/image/logocite-removebg-preview.png"
+            alt="Logo La Cité"
+            class="header-logo"
+        />
+        <div class="burger" onclick="toggleMenu()">☰</div>
+        <nav class="header-nav" id="headerNav">
+            <a href="/">Accueil</a>
+            <a href="static/pages/pageApropos.html">À propos de nous</a>
+            <a href="static/pages/admin.html">Administrateur</a>
+        </nav>
+    </header>
+
+    <button id="coop-info-button">
+        <img src="/static/image/citelogo.png" alt="Bouton Chatbot" >
+    </button>
+    <div class="chat-container" id="chat-container">
+        <div class="chat-header">
+            <img src="/static/image/citelogo.png" alt="Logo du chat" class="logochat">
+            <span>ChatBot-COOP</span>
+            <button id="close-chat-btn">×</button>
+        </div>
+        <div class="chat-box" id="chat-box">
+        </div>
+        <div class="chat-suggestions" id="chat-suggestions">
+            <button class="suggestion-button" data-question="Comment postuler au COOP ?">Comment postuler au COOP ?</button>
+            <button class="suggestion-button" data-question="Quelles sont les dates limites ?">Quelles sont les dates limites ?</button>
+            <button class="suggestion-button" data-question="Qu'est-ce que le service de jumelage ?">Qu'est-ce que le service de jumelage ?</button>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Posez votre question...">
+            <button id="send-btn">Envoyer</button>
+        </div>
+    </div>
+
+    <footer>
+        © 2025 La Cité Collégiale<br />
+        Tous droits réservés.
+    </footer>
+
+    <script src="/static/js/chatbot.js"></script>
+
+</body>
+</html>
