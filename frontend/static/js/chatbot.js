@@ -45,16 +45,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function displayMessage(sender, message) {
         const messageDiv = document.createElement("div");
-        messageDiv.classList.add("message", sender);
-        messageDiv.textContent = message;
+        messageDiv.classList.add("message");
+        messageDiv.classList.add(sender);
+
+        const messageContent = document.createElement("p");
+        messageDiv.appendChild(messageContent);
         chatBox.appendChild(messageDiv);
         chatBox.scrollTop = chatBox.scrollHeight;
+
+        if (sender === "bot") {
+            typeWriter(messageContent, message);
+        } else {
+            messageContent.textContent = message;
+        }
+    }
+
+    function typeWriter(element, text, i = 0) {
+        if (i < text.length) {
+            element.textContent += text.charAt(i);
+            setTimeout(() => typeWriter(element, text, i + 1), 30); // Ajuste la vitesse ici (30ms par caractère)
+        }
     }
 
     function sendMessage(message) {
         displayMessage("user", message);
 
-        fetch("/api/chat", {
+        fetch("http://127.0.0.1:5000/api/chat", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
