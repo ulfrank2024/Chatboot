@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Admin - COOP BOT</title>
+    <link rel="stylesheet" href="/static/css/admin.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a href="/">
+            <img src="/static/image/logocite-removebg-preview.png" alt="Logo La Cité" />
+        </a>
+       
+      </div>
+
+      <div class="burger" onclick="toggleMenu()">☰</div>
+      <nav id="navMenu">
+        <button onclick="scrollToSection('satisfaction')">Satisfaction</button>
+        <button onclick="scrollToSection('questions')">Questions</button>
+        <button onclick="scrollToSection('ajouter')">➕ Ajouter</button>
+        <a href="/" class="button_acceuil">Accueil</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="satisfaction">
+          <h2>Satisfaction des utilisateurs</h2>
+          <p>Basé sur les retours utilisateurs</p>
+          <canvas id="satisfactionChart"></canvas>
+      </section>
+      <section id="questions">
+        <h2>Questions sans réponse détectées</h2>
+        <p>
+            Ce tableau regroupe les questions que le chatbot n’a pas pu traiter,
+            classées par programme et session. Elles doivent être revues et
+            ajoutées à la base de connaissances si nécessaire.
+        </p>
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>Programme</th>
+                    <th>Session</th>
+                    <th>Question non répondue</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+    </section>
+    <section id="add-knowledge">
+      <h2>Ajouter une entrée à la base de connaissances</h2>
+      <form id="add-knowledge-form">
+          <div>
+              <label for="question_text">Question :</label>
+              <textarea id="question_text" name="question_text" required></textarea>
+          </div>
+          <div>
+              <label for="intent">Intention :</label>
+              <input type="text" id="intent" name="intent">
+          </div>
+          <div>
+              <label for="answer">Réponse :</label>
+              <textarea id="answer" name="answer" required></textarea>
+          </div>
+          <div>
+              <label for="link">Lien :</label>
+              <input type="text" id="link" name="link">
+          </div>
+          <button type="submit">Ajouter</button>
+          <div id="form-message" style="margin-top: 10px;"></div>
+      </form>
+  </section>
+    </main>
+
+    <footer>© 2025 La Cité Collégiale. Tous droits réservés.</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <script src="/static/js/satisfaction.js"></script>
+    <script src="/static/js/question.js"></script>
+    <!-- <script src="/static/js/admin.js"></script>
+  
+    <script src="/static/assest/js/question.js"></script>
+    <script src="/static/assest/js/formulaire.js"></script> -->
+  
+  </body>
+</html>
