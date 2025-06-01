@@ -444,26 +444,7 @@ footer {
 .message.bot {
   align-self: flex-start; 
 }
-@media (max-width: 768px) {
-  .burger {
-    display: block;
-  }
 
-  .header-nav {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 70px;
-    right: 10px;
-    background-color: #1d8e5d;
-    padding: 10px;
-    border-radius: 6px;
-  }
-
-  .header-nav.show {
-    display: flex;
-  }
-}
 #coop-info-button {
   position: fixed;
   top: 30%;
@@ -563,4 +544,47 @@ footer {
   border-radius: 3px;
   cursor: pointer;
   margin-left: 5px;
+}
+@media (max-width: 768px) {
+  .burger {
+    display: block;
+  }
+
+  .header-nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    background-color: #1d8e5d;
+    padding: 10px;
+    border-radius: 6px;
+  }
+
+  .header-nav.show {
+    display: flex;
+  }
+  #coop-info-button {
+    position: fixed;
+    top: 30%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 101;
+    width: 30px;
+    height: 30px;
+    background: none;
+  }
+  .chatbott{
+    width: 450px;
+    text-align: center;
+  }
+  footer {
+
+  }
+  .main{
+    height: 50vh;
+  }
 }
