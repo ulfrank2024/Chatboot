@@ -24,13 +24,17 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         try {
-            const response = await fetch("/admin/ajouter_intention", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            });
+            const response = await fetch(
+                "https://chatboot-bxkb.onrender.com/admin/ajouter_intention",
+                {
+                    // Utilisation de l'URL Render
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                }
+            );
 
             const result = await response.json();
 

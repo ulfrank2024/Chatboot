@@ -1,23 +1,27 @@
 // Fonction pour récupérer les données de satisfaction depuis le backend
 async function fetchSatisfactionData() {
     try {
-       
-        const response = await fetch('http://127.0.0.1:5000/satisfaction/data');
+        const response = await fetch(
+            "https://chatboot-bxkb.onrender.com/satisfaction/data"
+        ); // Utilisation de l'URL Render
         if (!response.ok) {
             throw new Error(`Erreur HTTP: ${response.status}`);
         }
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error("Erreur lors de la récupération des données de satisfaction:", error);
-       
+        console.error(
+            "Erreur lors de la récupération des données de satisfaction:",
+            error
+        );
+
         return null;
     }
 }
 
-
 async function renderSatisfactionChart() {
-    const satisfactionChartCanvas = document.getElementById('satisfactionChart');
+    const satisfactionChartCanvas =
+        document.getElementById("satisfactionChart");
 
     if (satisfactionChartCanvas) {
         const satisfactionData = await fetchSatisfactionData();
@@ -48,8 +52,8 @@ async function renderSatisfactionChart() {
                 "rgba(255, 206, 86, 0.8)", // Jaune (pour niveau 2)
                 "rgba(54, 162, 235, 0.8)", // Bleu (pour niveau 3)
                 "rgba(75, 192, 192, 0.8)", // Vert (pour niveau 4)
-                "rgba(153, 102, 255, 0.8)",// Violet (pour niveau 5)
-                "rgba(255, 159, 64, 0.8)"  // Orange (fallback si plus de 5 niveaux)
+                "rgba(153, 102, 255, 0.8)", // Violet (pour niveau 5)
+                "rgba(255, 159, 64, 0.8)", // Orange (fallback si plus de 5 niveaux)
             ];
             const borderColors = [
                 "rgba(255, 99, 132, 1)",
@@ -57,65 +61,70 @@ async function renderSatisfactionChart() {
                 "rgba(54, 162, 235, 1)",
                 "rgba(75, 192, 192, 1)",
                 "rgba(153, 102, 255, 1)",
-                "rgba(255, 159, 64, 1)"
+                "rgba(255, 159, 64, 1)",
             ];
 
-            new Chart(satisfactionChartCanvas.getContext('2d'), {
-                type: 'doughnut', // Changé en doughnut
+            new Chart(satisfactionChartCanvas.getContext("2d"), {
+                type: "doughnut", // Changé en doughnut
                 data: {
                     labels: labels,
-                    datasets: [{
-                        label: 'Répartition de la satisfaction',
-                        data: counts,
-                        backgroundColor: backgroundColors.slice(0, labels.length), // Utilise autant de couleurs que de labels
-                        borderColor: borderColors.slice(0, labels.length),
-                        borderWidth: 1
-                    }]
+                    datasets: [
+                        {
+                            label: "Répartition de la satisfaction",
+                            data: counts,
+                            backgroundColor: backgroundColors.slice(
+                                0,
+                                labels.length
+                            ), // Utilise autant de couleurs que de labels
+                            borderColor: borderColors.slice(0, labels.length),
+                            borderWidth: 1,
+                        },
+                    ],
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false, // Permet au graphique de s'adapter à la taille du conteneur
                     plugins: {
                         legend: {
-                            position: 'bottom', // Position de la légende en bas
+                            position: "bottom", // Position de la légende en bas
                         },
                         tooltip: {
                             callbacks: {
-                                label: function(context) {
-                                    let label = context.label || '';
+                                label: function (context) {
+                                    let label = context.label || "";
                                     if (context.parsed !== null) {
                                         // Affiche le label et le nombre de réponses
                                         label += `: ${context.parsed} réponses`;
                                     }
                                     return label;
-                                }
-                            }
+                                },
+                            },
                         },
-                        
+
                         datalabels: {
-                            color: '#fff', // Couleur du texte des labels
+                            color: "#fff", // Couleur du texte des labels
                             formatter: (value, context) => {
-                         
                                 return value;
                             },
                             font: {
-                                weight: 'bold'
-                            }
-                        }
-                    }
+                                weight: "bold",
+                            },
+                        },
+                    },
                 },
-               
-                plugins: [ChartDataLabels] // Ajouté comme dans ton code
+
+                plugins: [ChartDataLabels], // Ajouté comme dans ton code
             });
         } else {
             // Gérer le cas où fetchSatisfactionData retourne null (erreur de récupération)
             const chartContainerParent = satisfactionChartCanvas.parentElement;
             if (chartContainerParent) {
-                chartContainerParent.innerHTML = '<p style="color: red; text-align: center;">Impossible de charger les données de satisfaction. Veuillez vérifier la connexion au serveur ou les données.</p>';
+                chartContainerParent.innerHTML =
+                    '<p style="color: red; text-align: center;">Impossible de charger les données de satisfaction. Veuillez vérifier la connexion au serveur ou les données.</p>';
             }
         }
     }
-};
+}
 
 // Appeler la fonction pour rendre le graphique au chargement de la page
-document.addEventListener('DOMContentLoaded', renderSatisfactionChart);
+document.addEventListener("DOMContentLoaded", renderSatisfactionChart);

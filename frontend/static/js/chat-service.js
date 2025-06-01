@@ -7,15 +7,14 @@
         return crypto.randomUUID();
     }
 
-    let reformulationStep = 0; 
+    let reformulationStep = 0;
 
     async function submitSatisfaction(level, comment) {
         const sessionId = sessionId;
         try {
             const response = await fetch(
-                "http://127.0.0.1:5000/api/satisfaction",
+                "https://chatboot-bxkb.onrender.com/api/satisfaction", // Endpoint Render
                 {
-                    
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -31,7 +30,6 @@
             if (response.ok) {
                 const data = await response.json();
                 ChatUI.displayBotMessage(data.message);
-            
             } else {
                 console.error(
                     "Erreur lors de l'envoi de la satisfaction:",
@@ -50,7 +48,6 @@
     }
 
     async function sendMessage(message) {
-
         if (window.ChatUI.conversationState() >= 4) {
             console.log(
                 "Interaction désactivée après la satisfaction ou la fin de la conversation."
@@ -104,52 +101,52 @@
             endConversationKeywords.includes(message.toLowerCase().trim()) &&
             window.ChatUI.conversationState() < 4
         ) {
-            window.ChatUI.updateConversationState(3.5); 
+            window.ChatUI.updateConversationState(3.5);
 
-          
             await window.ChatUI.displayBotMessage(
                 "Avez-vous d'autres questions ?"
             );
-            return; 
+            return;
         }
 
-     
         if (window.ChatUI.conversationState() === 3.5) {
             const lowerCaseMessage = message.toLowerCase().trim();
             if (lowerCaseMessage === "non") {
                 await window.ChatUI.displayBotMessage(
                     "Au revoir ! N'hésitez pas à revenir."
                 );
-                window.ChatUI.updateConversationState(4); 
+                window.ChatUI.updateConversationState(4);
                 setTimeout(window.ChatUI.displaySatisfactionSurvey, 500);
                 return;
             } else if (lowerCaseMessage === "oui") {
-                window.ChatUI.updateConversationState(3); 
+                window.ChatUI.updateConversationState(3);
                 await window.ChatUI.displayBotMessage(
                     "D'accord, quelle est votre  question ?"
                 );
                 return;
             } else {
- 
                 window.ChatUI.updateConversationState(3);
-               
             }
         }
 
         try {
-            const response = await fetch("http://127.0.0.1:5000/chat/", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    message: message,
-                    user_id: userId,
-                    session_id: sessionId,
-                    etudiant_programme: window.ChatUI.etudiantProgramme(),
-                    etudiant_session: window.ChatUI.etudiantSessionAnnee(),
-                }),
-            });
+            const response = await fetch(
+                "https://chatboot-bxkb.onrender.com/chat/",
+                {
+                    // Endpoint Render
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        user_id: userId,
+                        session_id: sessionId,
+                        etudiant_programme: window.ChatUI.etudiantProgramme(),
+                        etudiant_session: window.ChatUI.etudiantSessionAnnee(),
+                    }),
+                }
+            );
 
             if (response.ok) {
                 const data = await response.json();
@@ -157,7 +154,7 @@
 
                 if (botResponse) {
                     await window.ChatUI.displayBotMessage(botResponse);
-                    reformulationStep = 0; 
+                    reformulationStep = 0;
                 } else {
                     reformulationStep++;
                     if (reformulationStep === 1) {
@@ -168,10 +165,10 @@
                         await window.ChatUI.displayBotMessage(
                             "Je ne suis toujours pas certain de comprendre. Veuillez contacter notre équipe à **coop@votre-etablissement.ca** pour plus d'assistance."
                         );
-                        reformulationStep = 0; 
+                        reformulationStep = 0;
                     }
                 }
-                saveConversationData(message, botResponse); 
+                saveConversationData(message, botResponse);
             } else {
                 console.error(
                     "Erreur lors de la requête au serveur:",
@@ -213,7 +210,7 @@
 
         try {
             const response = await fetch(
-                "http://127.0.0.1:5000/api/conversation",
+                "https://chatboot-bxkb.onrender.com/api/conversation", // Endpoint Render
                 {
                     method: "POST",
                     headers: {
@@ -268,7 +265,8 @@
     }
 
     async function sendInitialMessage(message) {
-        return await fetch("http://127.0.0.1:5000/chat/", {
+        return await fetch("https://chatboot-bxkb.onrender.com/chat/", {
+            // Endpoint Render
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -283,7 +281,7 @@
 
     async function sendConversationUpdate() {
         return await fetch(
-            `http://127.0.0.1:5000/chat/conversation/${sessionId}`,
+            `https://chatboot-bxkb.onrender.com/chat/conversation/${sessionId}`, // Endpoint Render
             {
                 method: "PUT",
                 headers: {
@@ -301,7 +299,7 @@
         userId = generateUUID();
         sessionId = generateUUID();
     }
- 
+
     window.ChatService = {
         sendMessage: sendMessage,
         sendConversationDataToServer: sendConversationDataToServer,

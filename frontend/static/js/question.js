@@ -2,7 +2,7 @@
 async function fetchUnansweredQuestions() {
     try {
         const response = await fetch(
-            "http://127.0.0.1:5000/questions/unanswered"
+            "https://chatboot-bxkb.onrender.com/questions/unanswered" // Utilisation de l'URL Render
         );
         if (!response.ok) {
             throw new Error(`Erreur HTTP! statut: ${response.status}`);
