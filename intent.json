@@ -1,0 +1,363 @@
+{
+ "intents": [
+  {
+   "tag": "Retrait_COOP",
+   "patterns": [
+    "Est-ce que je peux me retirer du COOP à n’importe quel moment ?",
+    "Je veux me retirer du COOP, est-ce possible à tout moment ?",
+    "Y a-t-il des dates limites pour se retirer du mode COOP ?",
+    "Si je me retire du mode coopératif, que se passe-t-il ?",
+    "Qu'arrive-t-il si je me retire du mode coopératif ?",
+    "Conséquences du retrait du COOP"
+   ],
+   "responses": [
+    "Le retrait du mode COOP est soumis à des **dates limites**, comme pour les cours ordinaires. Si tu te retires dans les **10 jours ouvrables** de la session, tu seras remboursé des frais pour la session en cours, mais pas ceux des sessions antérieures. Tu peux consulter les dates limites spécifiques sur le site. Si tu te retires, tu seras transféré dans ton programme d'étude régulier sans mention COOP et tu pourras obtenir ton diplôme une fois les exigences complétées."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Postuler_COOP",
+   "patterns": [
+    "Comment postuler au COOP ?",
+    "Quelle est la procédure pour postuler au mode COOP ?",
+    "Dates limites pour postuler au COOP",
+    "Formulaire d'inscription COOP"
+   ],
+   "responses": [
+    "Pour postuler au mode COOP, tu dois remplir le **formulaire d’inscription** via la plateforme **La Cité Emplois** en respectant les dates limites. L’inscription doit être faite au moins **2 trimestres** avant le placement COOP."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "COOP_Jumelage",
+   "patterns": [
+    "Est-ce que le COOP est un service de jumelage ?",
+    "Le COOP trouve-t-il mon stage pour moi ?",
+    "Est-ce que le COOP garantit un placement ?",
+    "Ai-je la garantie d'un placement COOP ?"
+   ],
+   "responses": [
+    "Non, le COOP n'est **pas un service de jumelage**. Tu es responsable de trouver ton propre placement COOP, mais tu es **appuyé par notre service**. Le processus COOP est compétitif et très similaire à un processus d’embauche régulier, donc un placement n'est pas garanti."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Reconnaissance_Acquis_COOP",
+   "patterns": [
+    "Si je retire un cours pour passer une reconnaissance des acquis, est-ce que cela affecte mes conditions d’admissions ?",
+    "La reconnaissance des acquis affecte-t-elle les conditions d'admission au COOP ?",
+    "Puis-je faire reconnaître de l'expérience passée pour le COOP ?"
+   ],
+   "responses": [
+    "Non, le fait de retirer un cours et de le remplacer par une note obtenue lors d’une reconnaissance des acquis **n’affecte pas les conditions d’admissions**. Malheureusement, il n'est **pas possible de faire reconnaître de l’expérience passée**; l'expérience doit être acquise au trimestre identifié dans le cheminement scolaire."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Conditions_Generales_COOP",
+   "patterns": [
+    "Quelles sont les conditions générales du COOP ?",
+    "Règles du programme COOP",
+    "Exigences générales du COOP"
+   ],
+   "responses": [
+    "Tous les étudiant.e.s COOP doivent adhérer aux **conditions générales** qui ont été mises en place pour profiter pleinement du programme coopératif."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Niveau_Anglais_COOP",
+   "patterns": [
+    "Si mon niveau d’anglais est débutant, est-ce que je peux obtenir un COOP ?",
+    "Anglais débutant et placement COOP",
+    "Comment améliorer mon anglais pour le COOP ?"
+   ],
+   "responses": [
+    "Si ton niveau d’anglais est débutant, il est crucial d'**investir du temps** dès maintenant pour le développer avant ton placement COOP. En plus de tes cours d’anglais, cherche des moyens de pratiquer. Plus tu améliores ton anglais, moins tu seras limité dans les offres de postes. Tu peux indiquer sur ton CV un niveau d'anglais intermédiaire si tu es capable de tenir une entrevue entièrement en anglais pendant au moins 30 minutes. Pour des ressources de pratique, visite **La Cité Emplois** (colonne de gauche, boîte à outils)."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Contacter_Conseillere_COOP",
+   "patterns": [
+    "Comment savoir qui est ma conseillère ?",
+    "Où sont les bureaux de l’équipe COOP, comment prendre un rendez-vous ?",
+    "Prendre rendez-vous avec ma conseillère COOP"
+   ],
+   "responses": [
+    "Tu peux trouver les informations de ta conseillère dans la **trousse d’accueil** ou dans l’**atelier eCité**. Nos bureaux sont actuellement situés au B1015 et au C1080. Pour prendre un rendez-vous, il est préférable de **communiquer directement avec ta conseillère**, car elle n'est pas toujours présente au campus."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Apres_Atelier_Preparation",
+   "patterns": [
+    "J’ai terminé mon atelier de préparation, maintenant je fais quoi ?",
+    "Prochaines étapes après l'atelier de préparation COOP",
+    "Comment débuter ma recherche après l'atelier ?"
+   ],
+   "responses": [
+    "Une fois l’atelier de préparation terminé, tu as les outils nécessaires pour débuter ta recherche : un bon CV, une lettre de présentation, une stratégie de recherche de placement, des conseils pour une bonne entrevue d’embauche et les comportements professionnels en milieu de travail. Tu peux commencer à rechercher des organisations qui t'intéressent pour ton placement COOP. Une session avant ton placement COOP, nous avons une période de **blitz** avec des affichages où tu devras postuler."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Quand_Stage_COOP",
+   "patterns": [
+    "Quand est mon stage ?",
+    "Quand aura lieu mon placement COOP ?",
+    "Comment connaître la date de mon stage COOP ?"
+   ],
+   "responses": [
+    "Tu peux te connecter à **La Cité Emplois** (sous COOP) pour consulter ton **tableau de bord** et voir ton cheminement COOP. Tu peux aussi consulter le site web suivant : https://www.collegelacite.ca/informations-pour-etudiants#Sequence-etude-travail."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Ou_Chercher_Stage",
+   "patterns": [
+    "Où chercher des lieux de stage ?",
+    "Comment trouver un placement COOP ?",
+    "Sites de recherche de stage COOP"
+   ],
+   "responses": [
+    "Tu peux effectuer ta recherche sur **La Cité Emplois** (il y a des offres exclusives pour toi). Il est aussi possible de faire tes propres recherches en ligne sur les sites des organisations et d’autres sites de recherche d’emploi."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Choix_Trimestre_Stage",
+   "patterns": [
+    "Puis-je faire mon stage au trimestre que je désire ?",
+    "Puis-je choisir le trimestre de mon stage COOP ?",
+    "Flexibilité du trimestre de stage COOP"
+   ],
+   "responses": [
+    "Non, tu dois **respecter ton cheminement établi** pour tes placements COOP."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Consequences_Atelier_Non_Complete",
+   "patterns": [
+    "Qu’arrive-t-il si je ne complète pas l’atelier à la date d’échéance ?",
+    "Je n'ai pas complété l'atelier de préparation à temps, que se passe-t-il ?",
+    "Sanctions pour atelier non complété"
+   ],
+   "responses": [
+    "Si tu ne complètes pas l’atelier à la date d’échéance, tu seras **retiré du mode coopératif** et transféré dans ton programme d’étude régulier."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Validation_Atelier_Preparation",
+   "patterns": [
+    "Comment savoir si j’ai validé l’atelier ?",
+    "Critères de validation de l'atelier de préparation COOP",
+    "Comment est validé l'atelier COOP ?"
+   ],
+   "responses": [
+    "L’atelier est considéré comme validé lorsque les **six modules sont complétés**, peu importe les notes obtenues."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Soumission_CV",
+   "patterns": [
+    "J’ai soumis mon CV dans le pigeonnier et après correction je dois le reprendre. Quand je le reprends je le re soumets dans le pigeonnier ?",
+    "Où est-ce que je dois déposer mon CV ?",
+    "Le pigeonnier est vide, est-ce normal ?",
+    "J'ai soumis mon CV, mais pas de nouvelles, est-ce normal ?",
+    "Délai de correction du CV COOP"
+   ],
+   "responses": [
+    "Oui, après correction, tu dois **re soumettre ton CV dans le pigeonnier**; la conseillère le vérifiera à deux reprises. Le pigeonnier deviendra disponible une fois que les tâches préalables (consultation du contenu et liste de vérification) auront été accomplies. C'est normal si tu ne vois rien dans le pigeonnier tant que tu n'as pas suivi toutes les étapes et consulté le contenu du module. Le personnel fait de son mieux pour tout revoir rapidement (48h ouvrables), mais le délai de correction peut se prolonger, surtout pendant les périodes d'activités intenses (ex: Foire de l’emploi). Le délai ne dépassera pas 2 semaines, sauf si la soumission a lieu avant la fermeture du collège pour le temps des fêtes."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Qui_Trouve_Placement_COOP",
+   "patterns": [
+    "Qui trouve le placement COOP ?",
+    "Qui est responsable de trouver le stage COOP ?",
+    "Aide pour la recherche de placement COOP"
+   ],
+   "responses": [
+    "C’est **principalement l’étudiant.e** qui fait les recherches. Nous fournissons les outils pour planifier et préparer la recherche (l’atelier). L’équipe COOP établit de nombreux contacts avec des employeurs et organise des événements pour t'aider. L’équipe COOP cherche également des postes COOP et des employeurs potentiels qui sont affichés sur la plateforme **La Cité Emplois** et sont exclusivement disponibles pour les étudiant.e.s COOP. L'étudiant doit chercher un placement rémunéré à la fois dans La Cité Emplois et à l'extérieur du collège."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Placement_COOP_Exterieur_Ottawa",
+   "patterns": [
+    "Est-ce que je peux faire un placement COOP à l’extérieur d’Ottawa ?",
+    "Placement COOP hors d'Ottawa",
+    "Placement COOP à l'extérieur du Canada",
+    "Puis-je faire mon placement COOP à l'extérieur du Canada ?"
+   ],
+   "responses": [
+    "Oui, il est possible de faire un placement COOP à l’extérieur d’Ottawa, voire n’importe où au Canada, mais le placement doit être **approuvé par la conseillère au préalable**. Un placement à l'extérieur du Canada est également possible, mais cela doit être communiqué au préalable pour assurer certains suivis supplémentaires."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Placement_COOP_College",
+   "patterns": [
+    "Est-ce qu’il y a des placements COOP possibles au collège ?",
+    "Puis-je faire mon stage COOP au collège ?",
+    "Offres de stage COOP internes"
+   ],
+   "responses": [
+    "Oui, des placements COOP sont possibles au collège dans certains secteurs."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Remuneration_Placement_COOP",
+   "patterns": [
+    "Est-ce que le placement est bénévole ou rémunéré ? Si rémunéré, quel est le salaire ?",
+    "Le stage COOP est-il payé ?",
+    "Salaire minimum pour un placement COOP",
+    "Puis-je accepter un poste qui me paye 100% à commission ?"
+   ],
+   "responses": [
+    "Un placement COOP doit absolument être **rémunéré pour être accepté**. Le salaire varie selon les employeurs, mais doit être au moins le **salaire minimum**. Les étudiant.e.s COOP ne peuvent pas accepter un poste qui rémunère strictement à commission; un salaire approprié (au moins le salaire minimum) doit être reçu."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Employeur_Silence_COOP",
+   "patterns": [
+    "Est-ce normal qu’un employeur ne communique pas avec moi ?",
+    "L'employeur ne me répond pas après ma candidature, est-ce normal ?",
+    "Absence de communication de l'employeur"
+   ],
+   "responses": [
+    "Oui, si tu n’es pas retenu pour une entrevue, l’employeur n’a **aucune obligation de communiquer avec toi** pour t’en aviser."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Nombre_Contacts_COOP",
+   "patterns": [
+    "Combien de contacts faut-il faire avec des employeurs pour obtenir un COOP ?",
+    "Combien de candidatures pour un stage COOP ?",
+    "Statistiques de recherche COOP"
+   ],
+   "responses": [
+    "Pour avoir du succès dans ta recherche COOP, il faut d’abord utiliser les bons outils. Il te faudra environ **20 contacts** pour obtenir 2-3 entrevues et potentiellement une offre COOP."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Emploi_Compte_COOP",
+   "patterns": [
+    "J’occupe présentement un emploi dans mon domaine d’études, est-ce que cela peut compter comme un placement COOP ?",
+    "Mon emploi actuel peut-il être reconnu comme stage COOP ?",
+    "Reconnaissance d'emploi existant pour le COOP"
+   ],
+   "responses": [
+    "Oui, cela est possible si l’emploi est à **temps plein** et répond aux exigences du programme. Le poste doit être **approuvé au préalable par ta conseillère**."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Duree_Minimale_Stage_COOP",
+   "patterns": [
+    "Quelle est la durée minimale d’un stage COOP ?",
+    "Combien d'heures pour un stage COOP ?",
+    "Durée requise pour un placement COOP"
+   ],
+   "responses": [
+    "La durée minimale d’un stage COOP doit être de **420 heures** pour être reconnu."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Approbation_Placement_Personnel",
+   "patterns": [
+    "J’ai trouvé ma propre offre pour un placement, que dois-je faire pour le faire approuver ?",
+    "Comment faire approuver un stage COOP que j'ai trouvé moi-même ?",
+    "Processus d'approbation d'un placement auto-trouvé"
+   ],
+   "responses": [
+    "Tu dois remplir le formulaire « **Déclarer un placement COOP** » dans **La Cité Emplois** en remplissant les champs obligatoires. Attention, le fait de remplir le formulaire ne confirme pas que ton placement est accepté. Ta conseillère communiquera avec toi pour valider le tout."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Pas_Affichages_LaCiteEmplois",
+   "patterns": [
+    "Je ne vois pas d’affichages de poste dans la plateforme La Cité Emplois, est-ce normal ?",
+    "Pourquoi il n'y a pas d'offres sur La Cité Emplois ?",
+    "Offres de stage bloquées sur La Cité Emplois"
+   ],
+   "responses": [
+    "Oui, cela peut être normal si tu n’as pas complété ton **atelier de préparation au placement COOP**; les affichages sont bloqués tant que l'atelier n'est pas terminé."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Arreter_Recherche_Apres_Acceptation",
+   "patterns": [
+    "Est-ce que je peux continuer ma recherche de COOP une fois que j’ai accepté un poste ?",
+    "Dois-je arrêter ma recherche de stage après avoir accepté une offre ?",
+    "Continuer à chercher un stage après avoir accepté une offre"
+   ],
+   "responses": [
+    "Non. Lorsque tu as accepté un poste COOP, tu dois **arrêter ta recherche**."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Sequence_Stage_Etude",
+   "patterns": [
+    "Dois-je absolument suivre la séquence stage/étude prescrite par le bureau COOP ?",
+    "Faut-il respecter la séquence étude-stage du COOP ?",
+    "Dérogations à la séquence COOP"
+   ],
+   "responses": [
+    "Oui, tu dois suivre la séquence prescrite. Cependant, nous pouvons permettre des **exceptions pour des raisons exceptionnelles** qui doivent être validées au préalable."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Voyage_Pendant_Placement_COOP",
+   "patterns": [
+    "J’ai un voyage de planifié pendant la période où a lieu mon placement et je veux faire COOP. Qu’est-ce que je fais ?",
+    "Voyage et stage COOP, est-ce compatible ?",
+    "Absence pendant le stage COOP"
+   ],
+   "responses": [
+    "Pour qu’un placement COOP soit réussi, tu dois effectuer un minimum de **420 heures** pendant la période identifiée au cheminement scolaire. Si le voyage que tu as prévu t’empêche d’atteindre ces heures, le COOP ne t’est **pas recommandé**."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Paiement_Frais_COOP",
+   "patterns": [
+    "Comment payer les frais de 350 $ ?",
+    "Comment vérifier si j'ai payé mes frais COOP ?",
+    "Où voir mes frais COOP ?",
+    "Frais accessoires COOP"
+   ],
+   "responses": [
+    "Si tu étais inscrit au mode coopératif directement lors de ton admission, les frais accessoires t’ont été facturés à ce moment-là et tu les as déjà payés. Si tu t’es inscrit via notre formulaire, le bureau des admissions te facturera les frais et tu dois les payer sur ton **portail étudiant**. Pour vérifier si tu as payé, tu pourras voir le solde sur la page d'accueil de ton portail. Tu peux vérifier les détails dans ton état financier en te connectant à ton portail (APPS, Dossier étudiant, libre-service, finances, interrogation comptes) ou en consultant l'onglet activité et frais exigibles. En cas de doute, consulte le bureau des admissions."
+   ],
+   "context": [""]
+  },
+  {
+   "tag": "Etudiants_Internationaux_COOP",
+   "patterns": [
+    "Si je suis étudiant.e international.e, est-ce que je peux me trouver un COOP ?",
+    "Permis de travail et permis de stage pour étudiants internationaux",
+    "Accès au COOP pour étudiants internationaux",
+    "Ai-je besoin d'un permis de stage si j'ai déjà un permis de travail ?"
+   ],
+   "responses": [
+    "Oui, absolument, de nombreux étudiants internationaux ont trouvé un COOP. Cependant, beaucoup de postes au gouvernement provincial et fédéral ne sont **pas accessibles** aux étudiants internationaux en raison des processus d'évaluation de sécurité. Vise surtout les **entreprises privées et les organismes communautaires**. Si tu as un permis d'études et un permis de travail, tu dois quand même demander un **permis de stage** auprès de l'IRCC, car un placement COOP est considéré comme un cours et non un simple emploi."
+   ],
+   "context": [""]
+  }
+ ]
+}
