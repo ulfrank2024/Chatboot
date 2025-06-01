@@ -1,0 +1,264 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #fff;
+    color: #222;
+  }
+
+  
+  header {
+    background: #1d8e5d; 
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    height: 40px;
+    object-fit: contain;
+  }
+  
+  .burger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  nav {
+    display: flex;
+    gap: 10px;
+  }
+  nav.show {
+    display: flex !important;
+    flex-direction: column;
+    background-color: #1d8e5d; 
+    padding: 10px;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    border-radius: 6px;
+  }
+  
+  nav button {
+    background: white;
+    border: none;
+    margin: 0 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  section {
+    padding: 1rem 2rem;
+  }
+
+ /* Styles pour la section de satisfaction des utilisateurs */
+#satisfaction {
+  background-color: #ffffff; /* Fond blanc */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  text-align: center; 
+}
+
+#satisfaction h2 {
+  color: #2e8b57; 
+  margin-top: 0;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #8fbc8f; 
+  padding-bottom: 5px;
+  display: inline-block; 
+}
+
+#satisfaction p {
+  color: #555;
+  margin-bottom: 15px;
+}
+
+#satisfaction canvas#satisfactionChart {
+
+  max-width: 500px;
+  max-height: 500px;
+  margin: 0 auto; 
+}
+#add-knowledge {
+  background-color: #f9f9f9; 
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+#add-knowledge h2 {
+  color: #2e8b57;
+  margin-top: 0;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #8fbc8f;
+  padding-bottom: 5px;
+}
+
+#add-knowledge form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+#add-knowledge div {
+  display: flex;
+  flex-direction: column;
+}
+
+#add-knowledge label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+#add-knowledge input[type="text"],
+#add-knowledge textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+#add-knowledge textarea {
+  min-height: 100px;
+}
+
+#add-knowledge button[type="submit"] {
+  background-color: #2e8b57; 
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+#add-knowledge button[type="submit"]:hover {
+  background-color: #3cb371; 
+}
+
+#add-knowledge #form-message {
+  padding: 10px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+#add-knowledge #form-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+#add-knowledge #form-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+#questions {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+#questions h2 {
+  color: #2e8b57; 
+  margin-top: 0;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #8fbc8f; /* Vert clair */
+  padding-bottom: 5px;
+}
+
+#questions p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+#questions table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden; 
+}
+
+#questions thead {
+  background-color: #f0f8f0;
+  color: #333;
+  font-weight: bold;
+}
+
+#questions th, #questions td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+#questions tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#questions tbody tr:hover {
+  background-color: #e0f2e7;
+}
+
+#questions tbody td {
+  color: #555;
+}
+
+#questions tbody tr td:last-child {
+}
+
+#questions tbody tr.empty td {
+  text-align: center;
+  font-style: italic;
+  color: #777;
+}
+  footer {
+    background: #1d8e5d; 
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .button_acceuil{
+    background: white;
+    border: none;
+    cursor: pointer;
+    padding: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #222;
+    font-size: 15px;
+  }
+  @media (max-width: 768px) {
+    nav {
+      display: none;
+    }
+  
+    .burger {
+      display: block;
+    }
+    #satisfaction{
+
+      width: 320px;
+    }
+  }
+  

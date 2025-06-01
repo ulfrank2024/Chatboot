@@ -7,7 +7,57 @@
         return crypto.randomUUID();
     }
 
+    let reformulationStep = 0; 
+
+    async function submitSatisfaction(level, comment) {
+        const sessionId = sessionId;
+        try {
+            const response = await fetch(
+                "http://127.0.0.1:5000/api/satisfaction",
+                {
+                    
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        session_id: sessionId,
+                        level: level,
+                        comment: comment,
+                    }),
+                }
+            );
+
+            if (response.ok) {
+                const data = await response.json();
+                ChatUI.displayBotMessage(data.message);
+            
+            } else {
+                console.error(
+                    "Erreur lors de l'envoi de la satisfaction:",
+                    response.status
+                );
+                ChatUI.displayBotMessage(
+                    "Désolé, une erreur est survenue lors de l'envoi de votre évaluation."
+                );
+            }
+        } catch (error) {
+            console.error("Erreur lors de l'envoi de la satisfaction:", error);
+            ChatUI.displayBotMessage(
+                "Désolé, une erreur inattendue est survenue lors de l'envoi de votre évaluation."
+            );
+        }
+    }
+
     async function sendMessage(message) {
+
+        if (window.ChatUI.conversationState() >= 4) {
+            console.log(
+                "Interaction désactivée après la satisfaction ou la fin de la conversation."
+            );
+            return;
+        }
+
         if (window.ChatUI.conversationState() < 3) {
             await window.ChatUI.displayBotMessage(
                 "Veuillez d'abord sélectionner votre programme et votre session."
@@ -18,9 +68,75 @@
         window.ChatUI.displayUserMessage(message);
         document.getElementById("user-input").value = "";
 
-        console.log("sendMessage appelée", message);
+        const endConversationKeywords = [
+            "quitter",
+            "ok",
+            "d accord",
+            "au revoir",
+            "merci",
+            "bye",
+            "à bientôt",
+            "ciao",
+            "j'y vais",
+            "je dois y aller",
+            "fin",
+            "c'est tout",
+            "j'ai terminé",
+            "plus de questions",
+            "tout est clair",
+            "parfait, merci",
+            "bonne journée",
+            "bonne soirée",
+            "compris",
+            "entendu",
+            "parfait",
+            "c'est noté",
+            "ça marche",
+            "oui, merci",
+            "non, merci",
+            "...",
+            "pas d'autres questions pour le moment",
+            "d'accord",
+            "daccord",
+            "Ok",
+        ];
+        if (
+            endConversationKeywords.includes(message.toLowerCase().trim()) &&
+            window.ChatUI.conversationState() < 4
+        ) {
+            window.ChatUI.updateConversationState(3.5); 
+
+          
+            await window.ChatUI.displayBotMessage(
+                "Avez-vous d'autres questions ?"
+            );
+            return; 
+        }
+
+     
+        if (window.ChatUI.conversationState() === 3.5) {
+            const lowerCaseMessage = message.toLowerCase().trim();
+            if (lowerCaseMessage === "non") {
+                await window.ChatUI.displayBotMessage(
+                    "Au revoir ! N'hésitez pas à revenir."
+                );
+                window.ChatUI.updateConversationState(4); 
+                setTimeout(window.ChatUI.displaySatisfactionSurvey, 500);
+                return;
+            } else if (lowerCaseMessage === "oui") {
+                window.ChatUI.updateConversationState(3); 
+                await window.ChatUI.displayBotMessage(
+                    "D'accord, quelle est votre  question ?"
+                );
+                return;
+            } else {
+ 
+                window.ChatUI.updateConversationState(3);
+               
+            }
+        }
+
         try {
-            console.log("sendMessage appelée", message);
             const response = await fetch("http://127.0.0.1:5000/chat/", {
                 method: "POST",
                 headers: {
@@ -38,16 +154,24 @@
             if (response.ok) {
                 const data = await response.json();
                 const botResponse = data.response;
-                await window.ChatUI.displayBotMessage(botResponse);
-                saveConversationData(message, botResponse);
 
-                if (
-                    botResponse &&
-                    botResponse.toLowerCase().includes("fin de conversation")
-                ) {
-                    window.ChatUI.updateConversationState(4);
-                    setTimeout(window.ChatUI.displaySatisfactionSurvey, 500);
+                if (botResponse) {
+                    await window.ChatUI.displayBotMessage(botResponse);
+                    reformulationStep = 0; 
+                } else {
+                    reformulationStep++;
+                    if (reformulationStep === 1) {
+                        await window.ChatUI.displayBotMessage(
+                            "Je n'ai pas bien compris. Pourriez-vous reformuler votre question ?"
+                        );
+                    } else {
+                        await window.ChatUI.displayBotMessage(
+                            "Je ne suis toujours pas certain de comprendre. Veuillez contacter notre équipe à **coop@votre-etablissement.ca** pour plus d'assistance."
+                        );
+                        reformulationStep = 0; 
+                    }
                 }
+                saveConversationData(message, botResponse); 
             } else {
                 console.error(
                     "Erreur lors de la requête au serveur:",
@@ -72,7 +196,6 @@
             );
         }
     }
-
     async function sendConversationDataToServer() {
         const conversationData = {
             user_id: userId,
@@ -178,7 +301,7 @@
         userId = generateUUID();
         sessionId = generateUUID();
     }
-    // Export des fonctions pour être utilisées ailleurs si nécessaire
+ 
     window.ChatService = {
         sendMessage: sendMessage,
         sendConversationDataToServer: sendConversationDataToServer,
@@ -186,5 +309,6 @@
         sendInitialMessage: sendInitialMessage,
         sendConversationUpdate: sendConversationUpdate,
         resetConversation: resetConversation,
+        submitSatisfaction: submitSatisfaction,
     };
 })();

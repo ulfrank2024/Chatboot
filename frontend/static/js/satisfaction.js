@@ -1,8 +1,7 @@
 // Fonction pour récupérer les données de satisfaction depuis le backend
 async function fetchSatisfactionData() {
     try {
-        // L'URL doit correspondre à ta route FastAPI
-        // Ici, nous utilisons l'URL complète pour être explicite, comme dans le code précédent
+       
         const response = await fetch('http://127.0.0.1:5000/satisfaction/data');
         if (!response.ok) {
             throw new Error(`Erreur HTTP: ${response.status}`);
@@ -11,12 +10,12 @@ async function fetchSatisfactionData() {
         return data;
     } catch (error) {
         console.error("Erreur lors de la récupération des données de satisfaction:", error);
-        // Retourne null pour indiquer qu'il y a eu un problème
+       
         return null;
     }
 }
 
-// Fonction pour créer et mettre à jour le graphique circulaire de satisfaction
+
 async function renderSatisfactionChart() {
     const satisfactionChartCanvas = document.getElementById('satisfactionChart');
 
@@ -92,11 +91,11 @@ async function renderSatisfactionChart() {
                                 }
                             }
                         },
-                        // Assure-toi que ChartDataLabels est bien enregistré globalement si utilisé comme plugin
+                        
                         datalabels: {
                             color: '#fff', // Couleur du texte des labels
                             formatter: (value, context) => {
-                                // Affiche le nombre directement comme tu l'as demandé
+                         
                                 return value;
                             },
                             font: {
@@ -105,9 +104,7 @@ async function renderSatisfactionChart() {
                         }
                     }
                 },
-                // Le plugin ChartDataLabels doit être enregistré globalement ou passé ici si non global
-                // Si tu l'importes via <script src="...chartjs-plugin-datalabels@2.0.0"></script>
-                // il est généralement disponible globalement.
+               
                 plugins: [ChartDataLabels] // Ajouté comme dans ton code
             });
         } else {

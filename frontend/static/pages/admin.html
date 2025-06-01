@@ -42,9 +42,10 @@
         <table>
             <thead>
                 <tr>
-                    <th>Programme</th>
-                    <th>Session</th>
-                    <th>Question non répondue</th>
+                  <th>Programme</th>
+                  <th>Session</th>
+                  <th>Question</th>
+      
                 </tr>
             </thead>
             <tbody>
@@ -55,20 +56,20 @@
       <h2>Ajouter une entrée à la base de connaissances</h2>
       <form id="add-knowledge-form">
           <div>
-              <label for="question_text">Question :</label>
-              <textarea id="question_text" name="question_text" required></textarea>
+            <label for="tag">Tag (Identifiant unique de l'intention):</label>
+            <input type="text" id="tag" name="tag" required>
           </div>
           <div>
-              <label for="intent">Intention :</label>
-              <input type="text" id="intent" name="intent">
+            <label for="theme">Thème (Optionnel):</label>
+            <input type="text" id="theme" name="theme">
           </div>
           <div>
-              <label for="answer">Réponse :</label>
-              <textarea id="answer" name="answer" required></textarea>
+            <label for="patterns">Patterns (Phrases d'exemple, une par ligne):</label>
+        <textarea id="patterns" name="patterns" required></textarea>
           </div>
           <div>
-              <label for="link">Lien :</label>
-              <input type="text" id="link" name="link">
+            <label for="responses">Réponses (Une par ligne):</label>
+            <textarea id="responses" name="responses" required></textarea>    
           </div>
           <button type="submit">Ajouter</button>
           <div id="form-message" style="margin-top: 10px;"></div>
@@ -82,10 +83,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <script src="/static/js/satisfaction.js"></script>
     <script src="/static/js/question.js"></script>
-    <!-- <script src="/static/js/admin.js"></script>
-  
-    <script src="/static/assest/js/question.js"></script>
-    <script src="/static/assest/js/formulaire.js"></script> -->
+    <script src="/static/js/formulaire.js"></script>
   
   </body>
 </html>

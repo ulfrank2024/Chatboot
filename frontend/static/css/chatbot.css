@@ -1,6 +1,4 @@
-/* /static/css/chatbot.css */
 
-/* Styles généraux */
 * {
   margin: 0;
   padding: 0;
@@ -75,8 +73,185 @@ footer {
   margin-top: auto;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
+.satisfaction-container {
+  margin-top: 20px;
+  text-align: center;
+}
 
-/* Styles spécifiques à la page d'accueil */
+.satisfaction-container p {
+  margin-bottom: 30px;
+  font-size: 1.1em;
+  color: #555;
+}
+
+.satisfaction-options {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.satisfaction-btn {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.satisfaction-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.satisfaction-btn[data-rating="1"] {
+  background-color: #ffe0e0;
+  color: #d32f2f;
+  border-color: #d32f2f;
+}
+
+.satisfaction-btn[data-rating="1"]:hover {
+  background-color: #ffcdd2;
+}
+
+.satisfaction-btn[data-rating="5"] {
+  background-color: #e0fff0;
+  color: #388e3c;
+  border-color: #388e3c;
+}
+
+.satisfaction-btn[data-rating="5"]:hover {
+  background-color: #c8e6c9;
+}
+
+.error-message {
+  color: #d32f2f;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+.thinking-indicator {
+  font-style: italic; 
+}
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #333;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+#program-selection .program-selection {
+  margin-top: 10px;
+  padding-left: 20px;
+  background-color: #1d9d66df;
+  color: white;
+  width: 400px;
+  border-radius: 10px;
+}
+
+
+#program-selection .program-selection input[type="radio"] {
+  margin-right: 8px;
+  vertical-align: middle; 
+}
+
+#program-selection #programme-ok-btn {
+  background-color: #1d8e5d; 
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+#program-selection #programme-ok-btn:hover {
+  background-color: #4cae4c;
+}
+
+#program-selection .error-message {
+  color: #d9534f; 
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+#session-selection {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+#session-selection p {
+  margin-bottom: 10px;
+}
+
+#session-selection .session-selection {
+  margin-top: 10px;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #1d9d66df;
+  color: white;
+  width: 400px;
+  border-radius: 10px;
+}
+
+#session-selection .session-selection label,
+#session-selection .session-selection select,
+#session-selection .session-selection input[type="number"] {
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+
+#session-selection .session-selection select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%; 
+  max-width: 200px; 
+}
+
+#session-selection .session-selection label[for="annee"] {
+  margin-top: 10px; 
+}
+
+#session-selection .session-selection input[type="number"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 80px;
+}
+
+#session-selection #session-ok-btn {
+  background-color: #1d8e5d;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+#session-selection #session-ok-btn:hover {
+  background-color: #1d8e5d;
+}
+
+#session-selection .error-message {
+  color: #d9534f; 
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
 .content {
   padding: 30px 20px;
   flex: 1;
@@ -105,14 +280,6 @@ footer {
   z-index: 1000;
 }
 
-/* .chatbot-image {
-  width: 500px;
-  height: auto;
-  max-height: 450px;
-  object-fit: contain;
-  animation: float 3s ease-in-out infinite;
-} */
-
 .chatbot-label {
   display: block;
   width: 100%;
@@ -125,7 +292,6 @@ footer {
   line-height: 1.4;
 }
 
-/* Styles spécifiques à la page "À propos" */
 .page-container {
   padding: 0 20px 40px;
   max-width: 900px;
@@ -243,7 +409,41 @@ footer {
   display: flex;
   gap: 1rem;
 }
+.message {
+  clear: both; 
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  word-break: break-word; 
+}
 
+.message.user {
+  background-color: #f0f0f0; 
+  color: #333;
+  float: right;
+  text-align: right; 
+}
+
+
+.message.bot {
+  background-color: #e0ffe0; 
+  color: #333; 
+  float: left; 
+  text-align: left; }
+
+#chat-box {
+  padding: 10px;
+  overflow-y: auto; 
+  display: flex; 
+  flex-direction: column; 
+}
+.message.user {
+  align-self: flex-end;
+}
+
+.message.bot {
+  align-self: flex-start; 
+}
 @media (max-width: 768px) {
   .burger {
     display: block;
@@ -264,8 +464,6 @@ footer {
     display: flex;
   }
 }
-
-/* Styles spécifiques au chatbot */
 #coop-info-button {
   position: fixed;
   top: 30%;

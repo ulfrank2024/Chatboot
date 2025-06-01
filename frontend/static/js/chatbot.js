@@ -15,9 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let isTyping = false; // Variable pour suivre si un message est en cours d'écriture
     let initialChatLoaded = false; // Nouvelle variable pour suivre le premier chargement
 
-    const initialBotMessageHTML =
-        '<div class="bot-message"><p>Bonjour !</p></div>';
-
     if (closeChatButton) {
         closeChatButton.addEventListener("click", function () {
             // Rafraîchir la page
@@ -30,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         coopInfoButton.style.display = "none";
         if (!chatInitialized && !initialChatLoaded) {
             // Vérifier si le chat a été initialement chargé
-            startChatInitialization();
+            startChatSequence(); // Appel de la nouvelle fonction de séquence
             chatInitialized = true;
             initialChatLoaded = true; // Marquer comme initialement chargé
         } else if (!chatInitialized) {
@@ -40,15 +37,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    async function startChatInitialization() {
+    async function startChatSequence() {
         conversationState = 1;
-        await displayBotMessage("Bonjour !"); // Le premier "Bonjour !"
-        window.ChatService.saveConversationData("", "Bonjour !");
-        await window.ChatService.sendInitialMessage("ouverture du chat");
+        await displayBotMessage("Bonjour !"); // Étape 1: Bonjour
 
         await displayBotMessage(
             "Veuillez sélectionner votre programme d'études.",
-            displayProgramSelection
+            displayProgramSelection // Étape 2: Sélection du programme
         );
         window.ChatService.saveConversationData(
             "",
@@ -131,15 +126,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 programSelectionDiv.style.display = "none";
                 window.ChatUI.updateConversationState(2);
                 await displayBotMessage(
-                    `Programme sélectionné : ${window.ChatUI.etudiantProgramme()}`
-                );
-                await displayBotMessage(
-                    "Veuillez sélectionner votre session et l'année :",
-                    displaySessionYearSelection
-                );
-                window.ChatService.saveConversationData(
-                    "",
-                    "Veuillez sélectionner votre session et l'année :"
+                    `Programme sélectionné : ${window.ChatUI.etudiantProgramme()}`,
+                    displaySessionYearSelection // Étape 3: Sélection de la session et de l'année après le programme
                 );
                 window.ChatService.saveConversationData(
                     "",
@@ -189,19 +177,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 sessionSelectionDiv.style.display = "none";
                 window.ChatUI.updateConversationState(3);
                 await displayBotMessage(
-                    `Session sélectionnée : ${window.ChatUI.etudiantSessionAnnee()}`
-                );
-                await window.ChatService.sendConversationUpdate();
-                await displayBotMessage(
-                    "Que puis-je faire pour vous aujourd'hui ?" // Ajout de ce message
+                    `Session sélectionnée : ${window.ChatUI.etudiantSessionAnnee()}`,
+                    async () => {
+                        // Étape 4: Demander comment aider après la session
+                        await displayBotMessage(
+                            "Que puis-je faire pour vous aujourd'hui ?"
+                        );
+                        window.ChatService.saveConversationData(
+                            "",
+                            "Que puis-je faire pour vous aujourd'hui ?"
+                        );
+                        window.ChatService.sendConversationUpdate();
+                    }
                 );
                 window.ChatService.saveConversationData(
                     "",
                     `Session sélectionnée : ${window.ChatUI.etudiantSessionAnnee()}`
-                );
-                window.ChatService.saveConversationData(
-                    "",
-                    "Que puis-je faire pour vous aujourd'hui ?" // Sauvegarder aussi ce message dans l'historique
                 );
             } else {
                 const sessionError = document.getElementById("session-error");
@@ -210,18 +201,18 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    function displaySatisfactionSurvey() {
+    async function displaySatisfactionSurvey() {
         const satisfactionDiv = document.createElement("div");
         satisfactionDiv.id = "satisfaction-survey";
         satisfactionDiv.classList.add("bot-message");
         satisfactionDiv.innerHTML = `
             <p>Comment s'est passée votre interaction avec moi ? 😊</p>
             <div class="satisfaction-options">
-                <button class="satisfaction-btn" data-rating="1">1 (Bof 🙁)</button>
-                <button class="satisfaction-btn" data-rating="2">2</button>
-                <button class="satisfaction-btn" data-rating="3">3</button>
-                <button class="satisfaction-btn" data-rating="4">4</button>
-                <button class="satisfaction-btn" data-rating="5">5 (Super 😄)</button>
+                <button class="satisfaction-btn" data-rating="1" data-text="Bof 🙁">1 (Bof 🙁)</button>
+                <button class="satisfaction-btn" data-rating="2" data-text="Moyen">2</button>
+                <button class="satisfaction-btn" data-rating="3" data-text="Bien">3</button>
+                <button class="satisfaction-btn" data-rating="4" data-text="Très bien">4</button>
+                <button class="satisfaction-btn" data-rating="5" data-text="Super 😄">5 (Super 😄)</button>
             </div>
             <div id="satisfaction-error" class="error-message" style="display: none;">Veuillez sélectionner une note.</div>
         `;
@@ -232,35 +223,49 @@ document.addEventListener("DOMContentLoaded", function () {
             satisfactionDiv.querySelectorAll(".satisfaction-btn");
         satisfactionButtons.forEach((button) => {
             button.addEventListener("click", async function () {
-                window.ChatUI.updateSatisfaction(
-                    parseInt(this.getAttribute("data-rating"))
-                );
+                const rating = parseInt(this.getAttribute("data-rating"));
+                const text = this.getAttribute("data-text");
+                window.ChatUI.updateSatisfaction(rating);
                 satisfactionDiv.style.display = "none";
-                await displayBotMessage(
-                    `Merci pour votre évaluation : ${window.ChatUI.satisfaction()} !`,
-                    window.ChatService.sendConversationDataToServer
+
+                // Afficher le message de remerciement
+                await window.ChatUI.displayBotMessage(
+                    `Merci pour votre reponse!`
                 );
-                window.ChatService.saveConversationData(
-                    "",
-                    `Satisfaction : ${window.ChatUI.satisfaction()}`
-                );
+                await window.ChatService.sendConversationDataToServer();
+
+                // Ajouter un délai avant de fermer le chat
+                setTimeout(() => {
+                    document.getElementById("chat-container").style.display =
+                        "none";
+                    document.getElementById("coop-info-button").style.display =
+                        "block";
+                    window.ChatUI.updateConversationState(0);
+                    document.getElementById("user-input").value = "";
+                    document.getElementById(
+                        "chat-box"
+                    ).innerHTML = `<div class="bot-message"><p>Bonjour !</p></div>`;
+                    window.ChatUI.updateEtudiantProgramme("");
+                    window.ChatUI.updateEtudiantSessionAnnee("");
+                    window.ChatUI.updateSatisfaction(null);
+                    conversationHistory = [];
+                    userId = generateUUID();
+                    sessionId = generateUUID();
+                }, 50); // Délai de 1.5 secondes (ajustez selon vos préférences)
             });
         });
     }
-
     // Gestionnaire d'événement pour le bouton d'informations sur la coopération
     coopInfoButton.addEventListener("click", function () {
         chatContainer.style.display = "flex";
         coopInfoButton.style.display = "none";
         if (!chatInitialized && !initialChatLoaded) {
-            // Vérifier si le chat a été initialement chargé
-            startChatInitialization();
+            
+            startChatSequence();
             chatInitialized = true;
-            initialChatLoaded = true; // Marquer comme initialement chargé
+            initialChatLoaded = true; 
         } else if (!chatInitialized) {
-            chatInitialized = true; // Marquer comme initialisé lors des ouvertures suivantes
-            // Si vous voulez afficher un message différent lors des réouvertures, faites-le ici.
-            // Par exemple: await displayBotMessage("Le chat est de retour !");
+            chatInitialized = true; 
         }
     });
 
@@ -316,7 +321,7 @@ document.addEventListener("DOMContentLoaded", function () {
         !chatInitialized &&
         !initialChatLoaded
     ) {
-        startChatInitialization();
+        startChatSequence(); // Appel de la nouvelle fonction de séquence
         chatInitialized = true;
         initialChatLoaded = true;
     }
