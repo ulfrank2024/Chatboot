@@ -256,9 +256,68 @@ body {
     .burger {
       display: block;
     }
-    #satisfaction{
-
-      width: 320px;
+    #satisfaction {
+      margin-left: 20px;
+      border-radius: 8px;
+      box-shadow: none;
+      border:none;
+     
+      width: 300px;
     }
+
+  #questions tbody tr {
+      display: block; /* Chaque ligne devient un bloc */
+      margin-bottom: 10px; /* Espacement entre les "cartes" de données */
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #fff;
+      padding: 10px;
+  }
+
+  #questions th,
+  #questions td {
+      display: block; /* Chaque cellule devient un bloc */
+      border-bottom: none; /* Supprime les bordures de cellule */
+      padding: 5px 0;
+      text-align: left; /* Alignement à gauche pour la lecture */
+  }
+
+  /* Optionnel: Afficher l'en-tête comme label avant la donnée */
+  #questions td::before {
+      content: attr(data-label) ": "; /* Récupère la valeur de l'attribut data-label */
+      font-weight: bold;
+      display: inline-block;
+      width: 120px; /* Ajustez la largeur selon vos besoins */
+      margin-right: 5px;
+  }
+
+  /* Cibler spécifiquement les cellules du tableau pour ajouter l'attribut data-label */
+  #questions thead th:nth-child(1),
+  #questions tbody td:nth-child(1) {
+      &::before {
+          content: "Programme: ";
+      }
+  }
+
+  #questions thead th:nth-child(2),
+  #questions tbody td:nth-child(2) {
+      &::before {
+          content: "Session: ";
+      }
+  }
+
+  #questions thead th:nth-child(3),
+  #questions tbody td:nth-child(3) {
+      &::before {
+          content: "Question: ";
+      }
+  }
+
+  #questions thead th:nth-child(4),
+  #questions tbody td:nth-child(4) {
+      &::before {
+          content: "Date & Heure: ";
+      }
+  }
   }
   
